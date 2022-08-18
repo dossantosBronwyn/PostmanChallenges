@@ -1,0 +1,7 @@
+https://api.openweathermap.org/data/2.5/forecast?{{SandtonLocation}}{{WEATHERAPIKEY}}
+
+Or
+
+{{base5ForecastWeatherURL}}{{SandtonLocation}}{{WEATHERAPIKEY}}
+Or
+https://api.openweathermap.org/data/2.5/forecast?q=Sandton&appid=b6a9a8ac50001a35f75bee4b79ed24f1

@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "01f21c40-381d-4c91-884e-62e5cb7085b4",
+		"name": "BreakingBadCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22833552"
+	},
+	"item": [
+		{
+			"name": "BreakingBadEpisodes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();",
+							"var episodeTitleOf19th;",
+							"// console.log(response[0].title);",
+							"",
+							"//Using the for of loop",
+							"for(episode of response){",
+							"    // console.log(episode.title)",
+							"if (episode.air_date.includes(\"08-19\")){",
+							"episodeTitleOf19th = episode.title;",
+							" console.log(\"episode aired on the 19th is :\",episodeTitleOf19th);",
+							"}",
+							"}",
+							"",
+							"//using the OG for loop in javascript ",
+							"for(var i=0; i < response.length; i++){",
+							"    if(response[i].air_date.startsWith(\"08-19\")){",
+							"        console.log(response[i].title)",
+							"    }",
+							"}",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BreakingBadURL}}episodes",
+					"host": [
+						"{{BreakingBadURL}}episodes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MostDeaths",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();",
+							"var theyDidDieAlot = 0",
+							"console.log(\"we doing it now i guess\")",
+							"",
+							"// Using the OG JS",
+							"for(var i=0; i < response.length; i++){",
+							"    if( theyDidDieAlot < response[i].number_of_deaths ){",
+							"        theyDidDieAlot = response[i].number_of_deaths;",
+							"        console.log(theyDidDieAlot);",
+							"    }",
+							"}",
+							"",
+							"//Using the for of loop in JS",
+							"for(mostDeaths of response){",
+							"    if (theyDidDieAlot < mostDeaths.number_of_deaths){",
+							"     theyDidDieAlot = mostDeaths.number_of_deaths;",
+							"        console.log(theyDidDieAlot);",
+							"    }",
+							"    if(theyDidDieAlot === mostDeaths.number_of_deaths){",
+							"        console.log(theyDidDieAlot,\"was the most deaths found in Season:\",mostDeaths.season)",
+							"       ",
+							"    }",
+							"}",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BreakingBadURL}}deaths",
+					"host": [
+						"{{BreakingBadURL}}deaths"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "appearing character",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json()",
+							"",
+							"//Using for of loop",
+							"for(appeared of response){",
+							"    if(appeared.better_call_saul_appearance != 0){",
+							"    console.log(appeared.name,'appeared in both Series')",
+							"    break",
+							"    }",
+							"}",
+							"",
+							"///Using OG JS",
+							"for(var i=0; i < response.length; i++){",
+							"    if(response[i].better_call_saul_appearance != 0){",
+							"        console.log(response[i].name)",
+							"        break",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BreakingBadURL}}characters",
+					"host": [
+						"{{BreakingBadURL}}characters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PatrickFabian",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json()",
+							"",
+							"// Using for of loop",
+							"for(portrayer of response){",
+							"    if (portrayer.portrayed.includes(\"Patrick\")){",
+							"        console.log(\"Patrick Fabain was portrayed by:\",portrayer.name)",
+							"    }",
+							"}",
+							"",
+							"//Using OG JS",
+							"for(var i=0; i < response.length; i++){",
+							"    if(response[i].portrayed.startsWith(\"Patrick\")){",
+							"        console.log(response[i].name)",
+							"    }",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BreakingBadURL}}characters",
+					"host": [
+						"{{BreakingBadURL}}characters"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
